@@ -1,20 +1,28 @@
-# Introduction 
-TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
+# A Java/Maven/JUnit HelloWorld example
 
-# Getting Started
-TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
-1.	Installation process
-2.	Software dependencies
-3.	Latest releases
-4.	API references
+A „Hello World!” sample written in Java using Maven for the build, that showcases a few very simple tests.
 
-# Build and Test
-TODO: Describe and show how to build your code and run the tests. 
+This example demonstrates:
 
-# Contribute
-TODO: Explain how other users and developers can contribute to make your code better. 
+* A simple Java 8 application with tests
+* Unit tests written with [JUnit 5](https://junit.org/junit5/)
+* Integration tests written with [JUnit 5](https://junit.org/junit5/)
+* Code coverage reports via [JaCoCo](https://www.jacoco.org/jacoco/)
+* A Maven build that puts it all together
 
-If you want to learn more about creating good readme files then refer the following [guidelines](https://docs.microsoft.com/en-us/azure/devops/repos/git/create-a-readme?view=azure-devops). You can also seek inspiration from the below readme files:
-- [ASP.NET Core](https://github.com/aspnet/Home)
-- [Visual Studio Code](https://github.com/Microsoft/vscode)
-- [Chakra Core](https://github.com/Microsoft/ChakraCore)
+## Running the tests
+
+* To run the unit tests, call `mvn test`
+* To run the integration tests as well, call `mvn verify`
+* Code coverage reports are generated when `mvn verify` (or a full `mvn clean install`) is called.
+  Point a browser at the output in `target/site/jacoco-both/index.html` to see the report.
+
+## Conventions
+
+This example follows the following basic conventions:
+
+| | unit test | integration test |
+| --- | --- | --- |
+| **resides in:** | `src/test/java/*Test.java` | `src/test/java/*IT.java` |
+| **executes in Maven phase:** | test | verify |
+| **handled by Maven plugin:** | [surefire](http://maven.apache.org/surefire/maven-surefire-plugin/) | [failsafe](http://maven.apache.org/surefire/maven-failsafe-plugin/) |

@@ -1,33 +1,21 @@
-[Bb]in
-[Oo]bj
-packages
-help
+# All Maven output goes here, compiled classes, generated code, etc.
+# Ignore only folders named target in root dir and direct child dirs.
+/target/
+*/target/
 
-*.suo
-*.user
-*.[Cc]ache
-*[Rr]esharper*
-*.zip
-*.suo
-*.user
-*.cache
-*.nupkg
-*.exe
-*.dll
-*.ncrunch*
-*.vsix
-
-Test*.html
-Test*.xml
-
-Index.dat
-Storage.dat
-
-.vs/
-
-project.lock.json
-*.nuget.props
-*.nuget.targets
-
-# JetBrains Rider
+# Eclipse generated files.
+.settings
+.classpath
+.project
+# IntelliJ generated files.
+*.iml
 .idea
+
+# Autogenerared OS X clutter.
+.DS_Store
+._.DS_Store
+# Windows explorer is just as bad.
+Thumbs.db
+
+# Various text editor swap files, etc.
+.*.swp
