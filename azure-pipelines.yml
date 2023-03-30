@@ -9,13 +9,33 @@ trigger:
 pool:
   name: Default
 
-steps:
-- task: Maven@4
-  displayName: 'Maven junit5-samples-main/junit5-samples-main/junit5-jupiter-starter-maven/pom.xml'
-  inputs:
-    mavenPomFile: 'junit5-samples-main/junit5-samples-main/junit5-jupiter-starter-maven/pom.xml'
-    options: '-X'
-    testResultsFiles: '**/TEST-*.xml'
-# - task: PublishTestResults@2
-#   displayName: 'Publish Test Results **/TEST-*.xml'
-#   retryCountOnTaskFailure: 5
+stages:
+- stage: PrepStage
+  displayName: Prep Stage
+  jobs:
+  - job: JA1
+    steps:
+    - task: Maven@4
+      displayName: 'Maven junit5-samples-main/junit5-samples-main/junit5-jupiter-starter-maven/pom.xml'
+      inputs:
+        mavenPomFile: 'junit5-samples-main/junit5-samples-main/junit5-jupiter-starter-maven/pom.xml'
+        options: '-X'
+        testResultsFiles: '**/TEST-*.xml'
+    # - task: PublishTestResults@2
+    #   displayName: 'Publish Test Results **/TEST-*.xml'
+    #   retryCountOnTaskFailure: 5
+
+- stage: AfterStage
+  displayName: Prep Stage
+  jobs:
+  - job: JA2
+    steps:
+    - task: Maven@4
+      displayName: 'Maven junit5-samples-main/junit5-samples-main/junit5-jupiter-starter-maven/pom.xml'
+      inputs:
+        mavenPomFile: 'junit5-samples-main/junit5-samples-main/junit5-jupiter-starter-maven/pom.xml'
+        options: '-X'
+        testResultsFiles: '**/TEST-*.xml'
+    - task: PublishTestResults@2
+      displayName: 'Publish Test Results **/TEST-*.xml'
+      retryCountOnTaskFailure: 5
